@@ -282,6 +282,9 @@ def canCastleKingSide(board, colour, wKingMoved, wKingRookMoved):
     # check if king or rook has moved
     if wKingRookMoved or wKingMoved:
         return False
+    # check that the king and rook are on the right squares
+    if board[7][4] != 'k' or board[7][7] != 'r':
+        return False
     if checkSquaresAttacked(board, row, 4): # or checkSquaresAttacked(board, row, 5) or checkSquaresAttacked(board, row, 6):
         return False
     # temporarily fill in the empty squares so that we can check if the square is being attacked
@@ -305,6 +308,9 @@ def canCastleQueenSide(board, colour, wKingMoved, wQueenRookMoved):
         return False
     # check if king or rook has moved
     if wKingMoved or wQueenRookMoved:
+        return False
+    # check that the king and rook are on the right squares
+    if board[7][4] != 'k' or board[7][0] != 'r':
         return False
     # temporarily fill in squares in between so we can check if square is being attacked
     board[row][4] = 'k'
